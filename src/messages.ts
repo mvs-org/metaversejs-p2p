@@ -1,9 +1,10 @@
 
-import { sha256sha256} from './crypto'
+import { sha256sha256 } from './crypto'
 import { VersionMessage } from './messages/version'
 import { PongMessage } from './messages/pong'
 import { PingMessage } from './messages/ping'
 import { VerackMessage } from './messages/verack'
+import { GetBlocksMessage } from './messages/getblocks'
 import { Message } from './messages/message'
 import { DataMessage } from './peer'
 import { DataBuffer } from './databuffer'
@@ -14,6 +15,7 @@ export {
     VerackMessage,
     DataMessage,
     VersionMessage,
+    GetBlocksMessage,
 }
 
 export class MessageBuilder {
@@ -79,6 +81,8 @@ export class MessageBuilder {
                 return PingMessage.fromBuffer(payload)
             case 'pong':
                 return new PongMessage({nonce: payload})
+            case 'getblocks':
+                return GetBlocksMessage.fromBuffer(payload)
             case 'version':
                 return VersionMessage.fromBuffer(payload)
             default:
@@ -87,7 +91,7 @@ export class MessageBuilder {
         }
     }
 
-    serialize(message: Message ) {
+    serialize(message: Message) {
         const command = Buffer.alloc(12)
         command.write(message.command, 'ascii')
         const payload = message.getPayload()
