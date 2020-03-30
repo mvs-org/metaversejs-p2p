@@ -18,6 +18,7 @@ export {
     VersionMessage,
     GetBlocksMessage,
     GetAddrMessage,
+    AddrMessage,
 }
 
 export class MessageBuilder {
@@ -85,6 +86,8 @@ export class MessageBuilder {
                 return new GetAddrMessage()
             case 'pong':
                 return new PongMessage({nonce: payload})
+            case 'addr':
+                return AddrMessage.fromBuffer(payload)
             case 'getblocks':
                 return GetBlocksMessage.fromBuffer(payload)
             case 'version':

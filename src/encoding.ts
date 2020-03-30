@@ -1,5 +1,5 @@
 import { decode, encode } from 'varuint-bitcoin'
-import { NetAddress } from './pool'
+import { NetAddress } from './messages/addr'
 
 export type VarStrEncoding = 'utf-8' | 'ascii' | 'hex'
 
@@ -9,7 +9,7 @@ export type BufferState = {
     offset: number,
 }
 
-export function parseIP(bufferState: BufferState) {
+export function readIP(bufferState: BufferState) {
     let ipv6 = []
     let ipv4 = []
     for (let a = 0; a < 8; a++) {
@@ -94,9 +94,6 @@ export function writeIP(ip: { v6?: string, v4?: string }, bw: Buffer) {
 }
 
 export function toAddress(address: NetAddress) {
-    // if (address === undefined) {
-    //     return Buffer.alloc(26, 0)
-    // }
     return Buffer.concat([
         toUInt64LE(address.services),
         toIP(address.ip),
@@ -115,9 +112,7 @@ export function toUInt16BE(number: number): Buffer {
 }
 
 export function toUInt64LE(value: number) {
-
     verifuint(Number(value), 0x01ffffffffffffff)
-
     const buffer = Buffer.allocUnsafe(8)
     buffer.writeInt32LE(Number(value) & -1, 0)
     buffer.writeUInt32LE(Math.floor(Number(value) / 0x100000000), 4)

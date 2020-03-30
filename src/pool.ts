@@ -11,14 +11,6 @@ function now() {
     return Math.floor(new Date().getTime() / 1000)
 }
 
-export interface NetAddress{
-    services: number
-    ip: {
-        v6?: string
-        v4?: string,
-    },
-    port: number
-}
 
 export interface Address {
     port?: number
