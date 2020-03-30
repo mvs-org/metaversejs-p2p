@@ -1,7 +1,12 @@
 {
   "name": "metaversejs-p2p",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "JavaScript library for the Metaverse Blockchain P2P network",
+  "keywords": [
+    "metaverse",
+    "blockchain",
+    "p2p"
+  ],
   "main": "test.js",
   "directories": {
     "lib": "lib"
@@ -10,6 +15,14 @@
     "build": "tsc",
     "test": "mocha -r ts-node/register test/**/*.test.ts"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mvs-org/metaversejs-p2p.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mvs-org/metaversejs-p2p/issues"
+  },
+  "homepage": "https://mvs.org",
   "author": "Sven Mutzl",
   "license": "MIT",
   "dependencies": {
