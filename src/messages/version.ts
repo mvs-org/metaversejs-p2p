@@ -1,7 +1,10 @@
 import { Message } from './message'
-import { NetAddress } from '../pool'
-import { toUInt32LE, toUInt64LE, toAddress, toVarStr, toUInt8, readUInt32LE, readInt64LE, parseIP, readUInt16BE, readSlice, readString, readInt8 } from '../encoding'
+import { NetAddress } from './addr'
+import { toUInt32LE, toUInt64LE, toAddress, toVarStr, toUInt8, readUInt32LE, readInt64LE, readIP, readUInt16BE, readSlice, readString, readInt8 } from '../encoding'
 import { getRandomNonce } from '../crypto'
+
+const pkg : {version: string} = require('../../package.json')
+
 
 export interface VersionMessagePayload {
     version: number
@@ -29,7 +32,7 @@ export class VersionMessage extends Message {
             toAddress(this.payload.addrMe),
             toAddress(this.payload.addrYou),
             this.payload.nonce || getRandomNonce(8),
-            toVarStr(this.payload.subversion || '/metaverse:0.9.2/', 'ascii'),
+            toVarStr(this.payload.subversion || `/mvsjs:${pkg.version}/`, 'ascii'),
             toUInt32LE(this.payload.startHeight || 0),
             toUInt8(this.payload.relay ? 1 : 0),
         ])
@@ -42,12 +45,12 @@ export class VersionMessage extends Message {
             timestamp: new Date(readInt64LE(bufferState) * 1000),
             addrMe: {
                 services: readInt64LE(bufferState),
-                ip: parseIP(bufferState),
+                ip: readIP(bufferState),
                 port: readUInt16BE(bufferState),
             },
             addrYou: {
                 services: readInt64LE(bufferState),
-                ip: parseIP(bufferState),
+                ip: readIP(bufferState),
                 port: readUInt16BE(bufferState),
             },
             nonce: readSlice(bufferState, 8),
