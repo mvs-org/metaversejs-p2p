@@ -108,6 +108,11 @@ export class Peer {
                 this._setStatus(Peer.STATUS.READY)
                 this.$uplink.next(new PeerReadyMessage())
             })
+        
+        this.$ingress.pipe(filter(message => message.command === 'inv'))
+            .subscribe((message) => {
+                this.$uplink.next(message)
+            })
 
         this.$ingress.pipe(filter(message => message.command === 'version'))
             .subscribe((message: VersionMessage) => {

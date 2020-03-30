@@ -8,6 +8,7 @@ import { GetBlocksMessage } from './messages/getblocks'
 import { Message } from './messages/message'
 import { DataMessage } from './peer'
 import { DataBuffer } from './databuffer'
+import { InventoryMessage, InventoryBlock, InventoryItem, InventoryTx, } from './messages/inventory'
 import { GetAddrMessage } from './messages/getaddr'
 
 export {
@@ -18,6 +19,10 @@ export {
     VersionMessage,
     GetBlocksMessage,
     GetAddrMessage,
+    InventoryMessage,
+    InventoryBlock,
+    InventoryItem,
+    InventoryTx,
     AddrMessage,
 }
 
@@ -92,6 +97,8 @@ export class MessageBuilder {
                 return GetBlocksMessage.fromBuffer(payload)
             case 'version':
                 return VersionMessage.fromBuffer(payload)
+            case 'inv':
+                return InventoryMessage.fromBuffer(payload)
             default:
                 return new DataMessage(command, payload)
             // throw new Error('Unsupported message command: ' + command);
