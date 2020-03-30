@@ -9,7 +9,9 @@ import { Message } from './messages/message'
 import { DataMessage } from './peer'
 import { DataBuffer } from './databuffer'
 import { InventoryMessage, InventoryBlock, InventoryItem, InventoryTx, } from './messages/inventory'
+import { MemPoolMessage } from './messages/mempool'
 import { GetAddrMessage } from './messages/getaddr'
+import { AddrMessage } from './messages/addr'
 
 export {
     PongMessage,
@@ -18,6 +20,7 @@ export {
     DataMessage,
     VersionMessage,
     GetBlocksMessage,
+    MemPoolMessage,
     GetAddrMessage,
     InventoryMessage,
     InventoryBlock,
@@ -30,7 +33,12 @@ export class MessageBuilder {
     static PAYLOAD_START = 16
     static MINIMUM_LENGTH = 20
     constructor(private magic: Buffer) { }
-    fromBuffer(dataBuffer: DataBuffer) {
+    fromBuffer(dataBuffer: DataBuffer | Buffer) {
+        if(dataBuffer instanceof Buffer){
+            const db = new DataBuffer()
+            db.push(dataBuffer)
+            dataBuffer = db
+        }
         if (dataBuffer.length < MessageBuilder.MINIMUM_LENGTH) {
             return
         }
@@ -89,8 +97,10 @@ export class MessageBuilder {
                 return PingMessage.fromBuffer(payload)
             case 'getaddr':
                 return new GetAddrMessage()
+            case 'mempool':
+                return new MemPoolMessage()
             case 'pong':
-                return new PongMessage({nonce: payload})
+                return new PongMessage({ nonce: payload })
             case 'addr':
                 return AddrMessage.fromBuffer(payload)
             case 'getblocks':
