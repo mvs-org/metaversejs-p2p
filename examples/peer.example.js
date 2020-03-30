@@ -14,7 +14,6 @@ peer.$egress.subscribe(message => {
 })
 
 peer.$ingress.subscribe(message => {
-    console.log(JSON.stringify(message.payload, null, 4))
     console.log('<<-- ingress from',peer.host, message.command, message.payload ? message.payload : '')
 })
 
