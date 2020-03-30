@@ -8,6 +8,7 @@ import { GetBlocksMessage } from './messages/getblocks'
 import { Message } from './messages/message'
 import { DataMessage } from './peer'
 import { DataBuffer } from './databuffer'
+import { GetAddrMessage } from './messages/getaddr'
 
 export {
     PongMessage,
@@ -16,6 +17,7 @@ export {
     DataMessage,
     VersionMessage,
     GetBlocksMessage,
+    GetAddrMessage,
 }
 
 export class MessageBuilder {
@@ -79,6 +81,8 @@ export class MessageBuilder {
                 return new VerackMessage()
             case 'ping':
                 return PingMessage.fromBuffer(payload)
+            case 'getaddr':
+                return new GetAddrMessage()
             case 'pong':
                 return new PongMessage({nonce: payload})
             case 'getblocks':
@@ -87,7 +91,7 @@ export class MessageBuilder {
                 return VersionMessage.fromBuffer(payload)
             default:
                 return new DataMessage(command, payload)
-                // throw new Error('Unsupported message command: ' + command);
+            // throw new Error('Unsupported message command: ' + command);
         }
     }
 
