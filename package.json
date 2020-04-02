@@ -34,7 +34,7 @@
     "@types/mocha": "^7.0.2",
     "@types/node": "^13.9.5",
     "chai": "^4.2.0",
-    "metaversejs-transport-tcpip": "0.0.1",
+    "metaversejs-transport-tcpip": "0.0.4",
     "tslint-eslint-rules": "^5.4.0"
   }
 }

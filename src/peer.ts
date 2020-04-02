@@ -235,7 +235,6 @@ export class Peer {
      * @param e Error
      */
     private _onError(e: Error) {
-        console.error({ error: e })
         if (this.$uplink) {
             this.$uplink.next(new PeerErrorMessage(e))
             if (this.currentStatus !== Peer.STATUS.DISCONNECTED) {
