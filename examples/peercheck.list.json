@@ -1,0 +1,152 @@
+[
+    {
+        "host": "129.204.236.202",
+        "port": 5251,
+        "name": "a01",
+        "location": "china"
+    },
+    {
+        "host": "129.211.146.234",
+        "port": 5251,
+        "name": "a02",
+        "location": "china"
+    },
+    {
+        "host": "62.234.91.185",
+        "port": 5251,
+        "name": "a03",
+        "location": "china"
+    },
+    {
+        "host": "148.70.120.89",
+        "port": 5251,
+        "name": "a04",
+        "location": "china"
+    },
+    {
+        "host": "124.156.118.213",
+        "port": 5251,
+        "name": "a05",
+        "location": "china"
+    },
+    {
+        "host": "139.59.39.196",
+        "port": 5251,
+        "name": "d01",
+        "location": "blr"
+    },
+    {
+        "host": "139.59.77.34",
+        "port": 5251,
+        "name": "d02",
+        "location": "blr"
+    },
+    {
+        "host": "139.59.8.122",
+        "port": 5251,
+        "name": "d03",
+        "location": "blr"
+    },
+    {
+        "host": "198.199.84.199",
+        "port": 5251,
+        "name": "d04",
+        "location": "nyc"
+    },
+    {
+        "host": "68.183.52.147",
+        "port": 5251,
+        "name": "d18",
+        "location": "nyc"
+    },
+    {
+        "host": "138.68.15.134",
+        "port": 5251,
+        "name": "d05",
+        "location": "sfo"
+    },
+    {
+        "host": "159.65.65.190",
+        "port": 5251,
+        "name": "d20",
+        "location": "sfo"
+    },
+    {
+        "host": "159.203.29.135",
+        "port": 5251,
+        "name": "d06",
+        "location": "tor"
+    },
+    {
+        "host": "138.197.155.16",
+        "port": 5251,
+        "name": "d07",
+        "location": "tor"
+    },
+    {
+        "host": "138.197.159.186",
+        "port": 5251,
+        "name": "d08",
+        "location": "tor"
+    },
+    {
+        "host": "138.68.129.78",
+        "port": 5251,
+        "name": "d09",
+        "location": "lon"
+    },
+    {
+        "host": "178.62.83.250",
+        "port": 5251,
+        "name": "d10",
+        "location": "lon"
+    },
+    {
+        "host": "188.226.161.89",
+        "port": 5251,
+        "name": "d11",
+        "location": "ams"
+    },
+    {
+        "host": "37.139.29.83",
+        "port": 5251,
+        "name": "d12",
+        "location": "ams"
+    },
+    {
+        "host": "95.85.9.168",
+        "port": 5251,
+        "name": "d13",
+        "location": "ams"
+    },
+    {
+        "host": "128.199.88.207",
+        "port": 5251,
+        "name": "d14",
+        "location": "sgp"
+    },
+    {
+        "host": "128.199.247.151",
+        "port": 5251,
+        "name": "d15",
+        "location": "sgp"
+    },
+    {
+        "host": "128.199.221.95",
+        "port": 5251,
+        "name": "d16",
+        "location": "sgp"
+    },
+    {
+        "host": "104.248.247.98",
+        "port": 5251,
+        "name": "d17",
+        "location": "fra"
+    },
+    {
+        "host": "142.93.101.124",
+        "port": 5251,
+        "name": "d19",
+        "location": "fra"
+    }
+]
