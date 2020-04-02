@@ -182,20 +182,16 @@ The messages only contain the hashes of the transactions and blocks.
 const { InventoryMessage, InventoryTx, InventoryBlock, } = require('metaversejs-p2p')
 
 // can contain transactions
-const message = new InventoryMessage({
-  inventory: [
+const message = new InventoryMessage([
     new InventoryTx('3550047ed23a5e68c5fca0f6cb1ddd0df69998c73e0318dc9c57adb376784849'),
     new InventoryTx('bfee531c274585ca3e222bc39e0fbad94b8e1a9b2cda09892d5e27d02caa3db9'),
-  ]
-})
+])
 
 // or blocks
-const message = new InventoryMessage({
-  inventory: [
+const message = new InventoryMessage([
     new InventoryBlock('a2e5e162a0b6d0faeb71ced40836b6fdf3715e4950d7ac9dd02bd80daea33de7'),
     new InventoryBlock('8f3cc621407f2b749bb807d855db6c0787a543d6956148684c0804279c35e8ce'),
-  ]
-})
+  ])
 ```
 
 #### GetAddr

@@ -12,6 +12,7 @@ import { InventoryMessage, InventoryBlock, InventoryItem, InventoryTx, } from '.
 import { MemPoolMessage } from './messages/mempool'
 import { GetAddrMessage } from './messages/getaddr'
 import { AddrMessage } from './messages/addr'
+import { GetDataMessage } from './messages/getdata'
 
 export {
     PongMessage,
@@ -27,6 +28,7 @@ export {
     InventoryItem,
     InventoryTx,
     AddrMessage,
+    GetDataMessage,
 }
 
 export class MessageBuilder {
@@ -105,6 +107,8 @@ export class MessageBuilder {
                 return AddrMessage.fromBuffer(payload)
             case 'getblocks':
                 return GetBlocksMessage.fromBuffer(payload)
+            case 'getdata':
+                return GetDataMessage.fromBuffer(payload)
             case 'version':
                 return VersionMessage.fromBuffer(payload)
             case 'inv':

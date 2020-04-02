@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { MessageBuilder, MemPoolMessage, GetAddrMessage } from '../src/messages'
+import { MessageBuilder, MemPoolMessage, GetAddrMessage, GetDataMessage } from '../src/messages'
 import { VerackMessage } from '../src/messages/verack'
 import { VersionMessage } from '../src/messages/version'
 import { DataBuffer } from '../src/databuffer'
@@ -47,10 +47,25 @@ describe('Messages', () => {
     })
   })
 
-  describe('Inv', () => {
-    const m = new InventoryMessage({inventory: [
+  describe('GetData', () => {
+    const m = new GetDataMessage([
       new InventoryBlock('436063323d6b2653dfabb46af99d0273bc2ca136c3b72f5b0a95b95657dccbc6'),
-    ]})
+    ])
+    const buffer = Buffer.from('4d56534d676574646174610000000000250000007c9e59f10102000000c6cbdc5756b9950a5b2fb7c336a12cbc73029df96ab4abdf53266b3d32636043', 'hex')
+    it('serialize', ()=>{
+      expect(builder.serialize(m).toString('hex')).to.equal(buffer.toString('hex'))
+    })
+    it('deserialize', ()=>{
+      const db = new DataBuffer()
+      db.push(buffer)
+      expect(builder.fromBuffer(db)).to.deep.equal(m)
+    })
+  })
+
+  describe('Inv', () => {
+    const m = new InventoryMessage([
+      new InventoryBlock('436063323d6b2653dfabb46af99d0273bc2ca136c3b72f5b0a95b95657dccbc6'),
+    ])
     const buffer = Buffer.from('4d56534d696e76000000000000000000250000007c9e59f10102000000c6cbdc5756b9950a5b2fb7c336a12cbc73029df96ab4abdf53266b3d32636043', 'hex')
     it('serialize', ()=>{
       expect(builder.serialize(m).toString('hex')).to.equal(buffer.toString('hex'))
